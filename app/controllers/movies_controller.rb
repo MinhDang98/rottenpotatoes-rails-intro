@@ -17,7 +17,7 @@ class MoviesController < ApplicationController
     @column = params[:sort_by]
     
     # question 2
-    @all_rating = Movie.find(:rating)
+    @all_rating = Movie.rating
     
   end
 
