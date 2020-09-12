@@ -16,7 +16,7 @@ class MoviesController < ApplicationController
     if params[:commit]
       # question 2
       # get all the unique rating value from the model
-      @movies = Movie.where(:rating)
+      @movies = Movie.where(:rating => params[:ratings])
     else
       # question 1
       # get the criteria that we need to sort_by and order it
