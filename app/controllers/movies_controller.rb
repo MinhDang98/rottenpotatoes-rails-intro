@@ -13,7 +13,7 @@ class MoviesController < ApplicationController
   def index
     @all_ratings = Movie.select(:rating).map(&:rating).uniq
 
-    if @filter_ratings
+    if params[:commit]
       # question 2
       # get all the unique rating value from the model
       @movies = Movie.where(:rating => @filter_ratings)
