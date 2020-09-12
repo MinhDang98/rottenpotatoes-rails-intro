@@ -4,16 +4,16 @@
 %table#movies.table.table-striped.col-md-12
   %thead
     %tr
-      %th Movie Title link_to 'Movies title', 'movies', :on_click => 'self.sort_title'
+      %th = link_to 'Movies title', :on_click => 'self.sort_title'
       %th Rating
       %th Release Date
       %th More Info
   %tbody
     - @movies.each do |movie|
       %tr
-        %td= movie.title
-        %td= movie.rating
-        %td= movie.release_date
-        %td= link_to "More about #{movie.title}", movie_path(movie)
+        %td = movie.title
+        %td = movie.rating
+        %td = movie.release_date
+        %td = link_to "More about #{movie.title}", movie_path(movie)
 
 = link_to 'Add new movie', new_movie_path
