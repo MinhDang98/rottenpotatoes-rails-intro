@@ -18,7 +18,7 @@ class MoviesController < ApplicationController
       if params[:ratings]
         # question 2
         # get all the unique rating value from the model
-        @movies = Movie.where(:rating => params[:ratings].keys).find(:all, :order => params[:sort_by])
+        @movies = Movie.where(:rating => params[:ratings].keys)
       end
     else
       # question 1
