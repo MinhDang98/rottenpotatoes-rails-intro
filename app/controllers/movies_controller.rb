@@ -11,9 +11,9 @@ class MoviesController < ApplicationController
   end
 
   def index
-    # get the criteria that we need to sort and order it
-    @movies = Movie.order(params[:criteria])
-    @column = params[:criteria]
+    # get the criteria that we need to sort_by and order it
+    @movies = Movie.order(params[:sort_by])
+    @column = params[:sort_by]
   end
   
   def sort_title
