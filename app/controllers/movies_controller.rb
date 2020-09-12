@@ -14,9 +14,12 @@ class MoviesController < ApplicationController
     @all_ratings = Movie.select(:rating).map(&:rating).uniq
 
     if params[:commit]
-      # question 2
-      # get all the unique rating value from the model
-      @movies = Movie.where(:rating => params[:ratings].keys)
+      # only sort if the checkboxes is checked
+      if params[:ratings]
+        # question 2
+        # get all the unique rating value from the model
+        @movies = Movie.where(:rating => params[:ratings].keys)
+      end
     else
       # question 1
       # get the criteria that we need to sort_by and order it
