@@ -17,7 +17,7 @@ class MoviesController < ApplicationController
     @column = params[:sort_by]
     
     # question 2
-    @all_rating = Movie.select(:rating).uniq
+    @all_rating = Model.select(:rating).uniq
     
   end
 
