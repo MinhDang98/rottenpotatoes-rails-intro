@@ -11,17 +11,14 @@ class MoviesController < ApplicationController
   end
 
   def index
+    # question 1
     # get the criteria that we need to sort_by and order it
     @movies = Movie.order(params[:sort_by])
     @column = params[:sort_by]
-  end
-  
-  def sort_title
-    @movies = Movie.order(:title)
-  end
-  
-  def sort_release_date
-    @movies = Movie.order(:release_date)
+    
+    # question 2
+    @all_rating = Movie.find(:rating)
+    
   end
 
   def new
