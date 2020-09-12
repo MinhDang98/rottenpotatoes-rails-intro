@@ -11,15 +11,18 @@ class MoviesController < ApplicationController
   end
 
   def index
-    # question 1
-    # get the criteria that we need to sort_by and order it
-    @movies = Movie.order(params[:sort_by])
-    @column = params[:sort_by]
-    
-    # question 2
-    # get all the unique rating value from the model
     @all_ratings = Movie.select(:rating).map(&:rating).uniq
-    
+
+    if @filter_ratings
+      # question 2
+      # get all the unique rating value from the model
+      @movies = Movie.where(:rating => @filter_ratings)
+    else
+      # question 1
+      # get the criteria that we need to sort_by and order it
+      @movies = Movie.order(params[:sort_by])
+      @column = params[:sort_by]
+    end
   end
 
   def new

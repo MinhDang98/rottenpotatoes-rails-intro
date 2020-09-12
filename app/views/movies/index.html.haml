@@ -6,7 +6,7 @@
   - @all_ratings.each do |rating|
     = rating
     = check_box_tag "ratings[#{rating}]", 1, if params[:ratings]; params[:ratings].include?(rating) end
-  = submit_tag 'Refresh',  movies_path(:sort_by =>'rating'), :id => 'ratings_submit'
+  = submit_tag 'Refresh', :id => 'ratings_submit'
 
 %table#movies.table.table-striped.col-md-12
   %thead
