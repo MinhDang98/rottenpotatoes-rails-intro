@@ -11,6 +11,8 @@ class MoviesController < ApplicationController
   end
 
   def index
+    @movies = Movie.all
+    
     # question 3
     if params[:ratings]
       session[:ratings] = :ratings
@@ -36,8 +38,6 @@ class MoviesController < ApplicationController
       @movies = Movie.order(params[:sort_by])
       @column = params[:sort_by]
     end
-    
-    session
   end
 
   def new
