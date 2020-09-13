@@ -11,10 +11,20 @@ class MoviesController < ApplicationController
   end
 
   def index
+    # question 3
+    if params[:ratings]
+      session[:ratings] = :ratings
+    end
+    
+    if params[:sort_by]
+      session[:sort_by]
+    end
+    
     @all_ratings = Movie.select(:rating).map(&:rating).uniq
-
+    
+    # filter when click the 'Refresh' button
     if params[:commit]
-      # only sort if the checkboxes is checked
+      # only filter if the checkboxes are checked
       if params[:ratings]
         # question 2
         # get all the unique rating value from the model
@@ -26,6 +36,8 @@ class MoviesController < ApplicationController
       @movies = Movie.order(params[:sort_by])
       @column = params[:sort_by]
     end
+    
+    session
   end
 
   def new
