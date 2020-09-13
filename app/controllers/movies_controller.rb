@@ -11,16 +11,13 @@ class MoviesController < ApplicationController
   end
 
   def index
-        @all_ratings = Movie.select(:rating).map(&:rating).uniq
+    @all_ratings = Movie.select(:rating).map(&:rating).uniq
     
-    # filter when click the 'Refresh' button
-    if params[:commit]
-      # only filter if the checkboxes are checked
-      if params[:ratings]
-        # question 2
-        # get all the unique rating value from the model
-        @movies = Movie.where(:rating => params[:ratings].keys).order(params[:sort_by])
-      end
+    # only filter if the checkboxes are checked
+    if params[:ratings]
+      # question 2
+      # get all the unique rating value from the model
+      @movies = Movie.where(:rating => params[:ratings].keys).order(params[:sort_by])
     else
       # question 1
       # get the criteria that we need to sort_by and order it
