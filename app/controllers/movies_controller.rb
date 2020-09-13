@@ -40,7 +40,7 @@ class MoviesController < ApplicationController
       @column = params[:sort_by]
     end
     
-    # check if current values is not match with the session values
+    # check if current values is not match with the session values and redirect them to correct value
     if session[:ratings] != params[:ratings] || session[:sort] != params[:sort]
       redirect_to movies_path(ratings: session[:ratings], sort: session[:sort])
     end
