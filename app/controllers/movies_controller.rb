@@ -11,8 +11,6 @@ class MoviesController < ApplicationController
   end
 
   def index
-    @movies = Movie.all
-    
     # question 3
     # restore params
     if params[:ratings]
