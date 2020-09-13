@@ -11,19 +11,8 @@ class MoviesController < ApplicationController
   end
 
   def index
+    # get all ratings from the model to show
     @all_ratings = Movie.select(:rating).map(&:rating).uniq
-    
-    # only filter if the checkboxes are checked
-    if params[:ratings]
-      # question 2
-      # get all the unique rating value from the model
-      @movies = Movie.where(:rating => params[:ratings].keys).order(params[:sort_by])
-    else
-      # question 1
-      # get the criteria that we need to sort_by and order it
-      @movies = Movie.order(params[:sort_by])
-      @column = params[:sort_by]
-    end
     
     # question 3
     # restore params
@@ -33,6 +22,20 @@ class MoviesController < ApplicationController
     
     if params[:sort_by]
       session[:sort_by] = params[:sort_by]
+    end
+    
+    if session[:ratings] || session[:sort_by]
+      # only filter if the checkboxes are checked
+      if params[:ratings]
+        # question 2
+        # get all the unique rating value from the model
+        @movies = Movie.where(:rating => params[:ratings].keys).order(params[:sort_by])
+      else
+        # question 1
+        # get the criteria that we need to sort_by and order it
+        @movies = Movie.order(params[:sort_by])
+        @column = params[:sort_by]
+      end
     end
     
     # check if current values is not match with the session values and redirect them to correct value
