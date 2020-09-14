@@ -13,6 +13,7 @@ class MoviesController < ApplicationController
   def index
     # get all ratings from the model to show
     @all_ratings = Movie.select(:rating).map(&:rating).uniq
+    @movies = Movie.all
     
     # question 3
     # restore params
